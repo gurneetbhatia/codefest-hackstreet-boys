@@ -3,10 +3,6 @@
 ################################################################################
 
 /.vs
-/api/.vs/API
-/api/appointments/api/obj
-/api/appointments/domain/obj
-/api/appointments/infrastructure/obj
-/api/referrals/api/obj
-/api/referrals/domain/obj
-/api/referrals/infrastructure/obj
+api/.vs
+**/obj
+**/bin
