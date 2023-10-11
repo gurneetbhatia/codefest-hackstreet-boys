@@ -24,11 +24,26 @@ public class ReferralsRepository : IReferralsRepository
 
         if (referral == null) return 0;
 
-        // update
-        if (_context.Referrals.Any(x => x.ReferralID == referralId))
-            _context.Referrals.Update(referral);
+        var patient = _context.Patients.SingleOrDefault(x => x.FirstName == referral.FirstName && x.LastName == referral.LastName && x.DOB == referral.DOB);
 
-        // create
+        if (patient != null)
+        {
+            referral.Exists = true;
+        }
+        else
+        {
+            referral.Exists = false;
+
+            _context.Patients.Add(new Patient
+            {
+                FirstName = referral.FirstName,
+                LastName = referral.LastName,
+                Address = referral.Address,
+                Email = referral.Email,
+                DOB = referral.DOB
+            };
+        }
+
         _context.Referrals.Add(referral);
 
         return _context.SaveChanges();
