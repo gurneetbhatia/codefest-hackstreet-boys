@@ -4,5 +4,9 @@
 
 /.vs
 /api/.vs/API
-/api/referrals/obj
-/api/appointments/obj
+/api/appointments/api/obj
+/api/appointments/domain/obj
+/api/appointments/infrastructure/obj
+/api/referrals/api/obj
+/api/referrals/domain/obj
+/api/referrals/infrastructure/obj
