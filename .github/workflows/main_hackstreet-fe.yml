@@ -13,6 +13,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ui
 
     steps:
       - uses: actions/checkout@v2
@@ -20,19 +23,23 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
+          node-version: '16.x'
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm npm --prefix ui/package.json run build --if-present
-          
+          npm install --legacy-peer-deps
+          npm run build --if-present --prod
+      - name: Zip artifact for deployment
+        run: zip ./release.zip ./dist/* -r
+
+      - name: LS
+        run: ls
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./ui/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,6 +53,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+          
+      - name: unzip artifact for deployment
+        run: unzip release.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
