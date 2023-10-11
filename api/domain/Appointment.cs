@@ -17,9 +17,9 @@ public class Appointment
     public string Location { get; set; }
     public int StatusID { get; set; }
 
-        public TimeSpan GetDuration()
-        {
-            return EndTime.Subtract(StartTime);
-        }
+    public TimeSpan GetDuration()
+    {
+        return EndTime.Subtract(StartTime);
     }
+
 }
