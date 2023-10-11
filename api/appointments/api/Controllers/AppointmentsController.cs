@@ -17,9 +17,18 @@ public class AppointmentsController : ControllerBase
         _repo = repo;
     }
 
-    [HttpGet(Name = "Get")]
-    public IEnumerable<Appointment> Get()
+    // get appointments for a specific patient or therapist
+    [HttpGet("Get")]
+    public async Task<List<Appointment>> Get(int patientId, int therapistId)
     {
         return new List<Appointment>();
+    }
+
+    // admin user/therapist can update details of appointment
+    // this method also handles creating new appointments
+    [HttpPost("Update")]
+    public async Task<bool> Update(int referralId, int statusId)
+    {
+        return true;
     }
 }

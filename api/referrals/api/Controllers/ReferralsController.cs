@@ -17,9 +17,18 @@ public class ReferralsController : ControllerBase
         _repo = repo;
     }
 
-    [HttpGet(Name = "Get")]
-    public IEnumerable<Referral> Get()
+    // get referral based on referralid
+    [HttpGet("Get")]
+    public async Task<Referral> Get(int referralId)
     {
-        return new List<Referral>();
+        return new Referral();
+    }
+
+    // admin user/therapist gets a referral and approves or rejects it via statusid
+    // this method also handles creating new referral
+    [HttpPost("Update")]
+    public async Task<bool> Update(int referralId, int statusId)
+    {
+        return true;
     }
 }
