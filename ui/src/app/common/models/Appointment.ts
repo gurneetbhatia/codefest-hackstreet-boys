@@ -8,7 +8,7 @@ export interface IAppointment {
     notes: string;
     location: string;
     therapistEid: string;
-    statusId: Status;
+    status: Status;
 }
 
 export enum Service {

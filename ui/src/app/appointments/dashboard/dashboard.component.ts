@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IAppointment } from 'src/app/common/models/Appointment';
 import { IUser } from 'src/app/common/models/User';
+import { AppointmentsService } from 'src/app/common/services/appointments.service';
 import { UserService } from 'src/app/common/services/user.service';
 
 @Component({
@@ -10,11 +12,14 @@ import { UserService } from 'src/app/common/services/user.service';
 export class DashboardComponent implements OnInit {
 
   userType: string;
+  appointments: [IAppointment];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private apptsService: AppointmentsService) { }
 
   ngOnInit(): void {
     this.userType = this.userService.getUserType();
+    this.appointments = this.apptsService.getAppointments();
   }
 
 }

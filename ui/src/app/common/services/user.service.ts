@@ -19,7 +19,7 @@ export class UserService {
       userType: 'Patient'
     }
     const mockTherapistUser: IUser = {
-      uid: '12345',
+      uid: '123465',
       firstName: 'John The Therapist',
       lastName: 'Doe',
       dob: new Date('05-06-2000'),
@@ -28,7 +28,7 @@ export class UserService {
       userType: 'Patient'
     }
     const mockAdminUser: IUser = {
-      uid: '12345',
+      uid: '1232145',
       firstName: 'John The Admin',
       lastName: 'Doe',
       dob: new Date('05-06-2000'),

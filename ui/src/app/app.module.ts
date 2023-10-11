@@ -12,7 +12,8 @@ import { DashboardComponent } from './appointments/dashboard/dashboard.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
