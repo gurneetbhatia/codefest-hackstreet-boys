@@ -24,8 +24,8 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm npm --prefix ui/package.json run build --if-present
+          npm --prefix ui/package.json install
+          npm --prefix ui/package.json run build --if-present
           
 
       - name: Upload artifact for deployment job
