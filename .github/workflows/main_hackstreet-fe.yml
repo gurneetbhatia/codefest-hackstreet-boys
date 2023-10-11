@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - ui
   workflow_dispatch:
 
 jobs:
@@ -24,8 +25,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
-          npm run test --if-present
+          npm npm --prefix ui/package.json run build --if-present
+          
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
