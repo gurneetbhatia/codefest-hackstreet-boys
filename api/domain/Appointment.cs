@@ -1,18 +1,25 @@
-﻿namespace Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Appointment
+namespace Domain
 {
-    public string Title { get; set; }
-    public DateTime StartTime { get; set; }
-    public DateTime EndTime { get; set; }
-    public int ServiceID { get; set; }
-    public int PatientID { get; set; }
-    public DateTime Date { get; set; }
-    public string Location { get; set; }
-    public int StatusID { get; set; }
-
-    public TimeSpan GetDuration()
+    public class Appointment
     {
-        return EndTime.Subtract(StartTime);
+        public string Title { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int ServiceID { get; set; }
+        public int PatientID { get; set; }
+        public DateTime Date { get; set; }
+        public string Location { get; set; }
+        public int StatusID { get; set; }
+
+        public TimeSpan GetDuration()
+        {
+            return EndTime.Subtract(StartTime);
+        }
     }
 }
