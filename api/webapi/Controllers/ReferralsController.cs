@@ -17,15 +17,13 @@ public class ReferralsController : ControllerBase
         _repo = repo;
     }
 
-    // get referral based on referralid
+    // get all referrals associated with patient based on: firstname lastname dob
     [HttpGet("Get")]
-    public async Task<List<Referral>> Get(int referralId)
+    public async Task<List<Referral>> Get(string firstName, string lastName, DateTime dob)
     {
-        return _repo.Get(referralId);
+        return _repo.Get(firstName, lastName, dob);
     }
 
-    // admin user/therapist gets a referral and approves or rejects it via statusid
-    // this method also handles creating new referral
     [HttpPost("Update")]
     public async Task<IActionResult> Update(Referral referral)
     {
