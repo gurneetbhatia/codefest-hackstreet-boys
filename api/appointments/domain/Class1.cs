@@ -1,7 +1,6 @@
-﻿namespace Appointments.Domain
-{
-    public class Class1
-    {
+﻿namespace Appointments.Domain;
 
-    }
+public class Class1
+{
+
 }

@@ -1,7 +1,6 @@
-﻿namespace Referrals.Domain
-{
-    public class Class1
-    {
+﻿namespace Referrals.Domain;
 
-    }
+public class Class1
+{
+
 }
