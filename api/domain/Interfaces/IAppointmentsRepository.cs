@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json.Linq;
 
 namespace Domain.Interfaces;
 
 public interface IAppointmentsRepository
 {
+    List<Appointment> Get(int apptId);
+    int Update(int apptId, JObject jsonObject);
 }

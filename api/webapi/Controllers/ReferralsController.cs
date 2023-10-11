@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
-using Referrals.Domain;
-using Referrals.Domain.Interfaces;
+using Domain;
+using Domain.Interfaces;
 
 namespace API.Controllers;
 
@@ -20,9 +20,9 @@ public class ReferralsController : ControllerBase
 
     // get referral based on referralid
     [HttpGet("Get")]
-    public async Task<Referral> Get(int referralId)
+    public async Task<List<Referral>> Get(int referralId)
     {
-        return new Referral();
+        return _repo.Get(referralId);
     }
 
     // admin user/therapist gets a referral and approves or rejects it via statusid
@@ -30,6 +30,9 @@ public class ReferralsController : ControllerBase
     [HttpPost("Update")]
     public async Task<IActionResult> Update(int referralId, [FromForm]JObject formData)
     {
-        _repo.Update(referralId, formData);
+        if (_repo.Update(referralId, formData) > 0)
+            return Ok();
+        else
+            return BadRequest();
     }
 }

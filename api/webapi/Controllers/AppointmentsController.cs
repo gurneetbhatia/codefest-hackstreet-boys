@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Appointments.Domain;
-using Appointments.Domain.Interfaces;
+using Domain;
+using Domain.Interfaces;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace API.Controllers;
 
@@ -28,8 +29,11 @@ public class AppointmentsController : ControllerBase
     // admin user/therapist can update details of appointment
     // this method also handles creating new appointments
     [HttpPost("Update")]
-    public async Task<bool> Update(int apptId, [FromForm]JObject formData)
+    public async Task<IActionResult> Update(int apptId, [FromForm]JObject formData)
     {
-        return true;
+        if (_repo.Update(apptId, formData) > 0)
+            return Ok();
+        else
+            return BadRequest();
     }
 }
