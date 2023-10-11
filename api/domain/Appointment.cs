@@ -1,5 +1,10 @@
-﻿namespace Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace Domain;
 public class Appointment
 {
     public int Id { get; set; }
@@ -12,8 +17,9 @@ public class Appointment
     public string Location { get; set; }
     public int StatusID { get; set; }
 
-    public TimeSpan GetDuration()
-    {
-        return EndTime.Subtract(StartTime);
+        public TimeSpan GetDuration()
+        {
+            return EndTime.Subtract(StartTime);
+        }
     }
 }
