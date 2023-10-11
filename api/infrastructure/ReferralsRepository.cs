@@ -24,7 +24,9 @@ public class ReferralsRepository : IReferralsRepository
 
         if (referral == null) return 0;
 
-        var patient = _context.Patients.SingleOrDefault(x => x.FirstName == referral.FirstName && x.LastName == referral.LastName && x.DOB == referral.DOB);
+        var id = ConstructPersonUniqueId(referral.FirstName, referral.LastName, referral.DOB);
+
+        var patient = _context.Patients.SingleOrDefault(x => x.UniqueID == id);
 
         if (patient != null)
         {
@@ -47,6 +49,11 @@ public class ReferralsRepository : IReferralsRepository
         _context.Referrals.Add(referral);
 
         return _context.SaveChanges();
+    }
+
+    public string ConstructPersonUniqueId(string firstName, string lastName, DateTime dob)
+    {
+        return $"{firstName.ToUpper()}-{lastName.ToUpper()}-{dob:yyyyMMdd}";
     }
 
 }
