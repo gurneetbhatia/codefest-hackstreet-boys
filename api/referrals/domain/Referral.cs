@@ -1,6 +1,6 @@
 ﻿namespace Referrals.Domain;
 
-public class Class1
+public class Referral
 {
 
 }
