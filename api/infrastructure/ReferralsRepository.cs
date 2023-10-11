@@ -43,7 +43,7 @@ public class ReferralsRepository : IReferralsRepository
                 Address = referral.Address,
                 Email = referral.Email,
                 DOB = referral.DOB
-            };
+            });
         }
 
         _context.Referrals.Add(referral);
