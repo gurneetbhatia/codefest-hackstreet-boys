@@ -10,11 +10,12 @@ public class HackstreetDbContext : DbContext
 
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        // get from config
-        optionsBuilder.UseSqlServer();
-        base.OnConfiguring(optionsBuilder);
+        builder.Entity<Referral>(entity => entity.ToTable("Referrals"));
+        builder.Entity<Appointment>(entity => entity.ToTable("Appointments"));
+        builder.Entity<Patient>(entity => entity.ToTable("Patients"));
+        builder.Entity<Employee>(entity => entity.ToTable("Employees"));
     }
 
     public DbSet<Referral> Referrals { get; set; }
