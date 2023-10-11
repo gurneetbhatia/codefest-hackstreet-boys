@@ -13,7 +13,7 @@ public class HackstreetDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // get from config
-        optionsBuilder.UseSqlServer(@"");
+        optionsBuilder.UseSqlServer();
         base.OnConfiguring(optionsBuilder);
     }
 

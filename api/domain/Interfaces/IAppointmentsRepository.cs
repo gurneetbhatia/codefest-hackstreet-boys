@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace Domain.Interfaces;
+﻿namespace Domain.Interfaces;
 
 public interface IAppointmentsRepository
 {
-    List<Appointment> Get(int apptId);
-    int Update(int apptId, JObject jsonObject);
+    List<Appointment> Get(int? patientId, int? therapistId);
+    int Update(Appointment appointment);
 }

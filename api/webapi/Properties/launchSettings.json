@@ -8,6 +8,9 @@
       "sslPort": 44346
     }
   },
+  "connectionStrings": {
+    "HackstreetBoysDb": ""
+  },
   "profiles": {
     "http": {
       "commandName": "Project",

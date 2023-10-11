@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Domain;
 using Domain.Interfaces;
 
@@ -28,9 +27,9 @@ public class ReferralsController : ControllerBase
     // admin user/therapist gets a referral and approves or rejects it via statusid
     // this method also handles creating new referral
     [HttpPost("Update")]
-    public async Task<IActionResult> Update(int referralId, [FromForm]JObject formData)
+    public async Task<IActionResult> Update(Referral referral)
     {
-        if (_repo.Update(referralId, formData) > 0)
+        if (_repo.Update(referral) > 0)
             return Ok();
         else
             return BadRequest();

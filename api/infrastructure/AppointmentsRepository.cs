@@ -1,6 +1,5 @@
 ﻿using Domain;
 using Domain.Interfaces;
-using Newtonsoft.Json.Linq;
 
 namespace Infrastructure;
 
@@ -13,19 +12,28 @@ public class AppointmentsRepository : IAppointmentsRepository
         _context = context;
     }
 
-    public List<Appointment> Get(int apptId)
+    public List<Appointment> Get(int? patientId, int? therapistId)
     {
-        return _context.Appointments.Where(x => x.Id == apptId).ToList();
+        if (patientId.HasValue && therapistId.HasValue)
+            return _context.Appointments.Where(x => x.PatientID == patientId.Value && x.TherapistId == therapistId.Value).ToList();
+
+        if (patientId.HasValue)
+            return _context.Appointments.Where(x => x.PatientID == patientId.Value).ToList();
+
+        if (therapistId.HasValue)
+            return _context.Appointments.Where(x => x.TherapistId == therapistId.Value).ToList();
+
+        return new List<Appointment>();
     }
 
-    public int Update(int apptId, JObject apptJsonObject)
+    public int Update(Appointment appt)
     {
-        var appt = apptJsonObject.ToObject<Appointment>();
+        //var appointmentt = apptJsonObject.ToObject<Appointment>();
 
         if (appt == null) return 0;
 
         // update
-        if (_context.Appointments.Any(x => x.Id == apptId))
+        if (_context.Appointments.Any(x => x.Id == appt.Id))
             _context.Appointments.Update(appt);
 
         // create

@@ -1,5 +1,6 @@
 using Domain.Interfaces;
 using Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<HackstreetDbContext>();
-builder.Services.AddSingleton<IAppointmentsRepository, AppointmentsRepository>();
-builder.Services.AddSingleton<IReferralsRepository, ReferralsRepository>();
+builder.Services.AddDbContext<HackstreetDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HackstreetBoysDb")));
+builder.Services.AddScoped<IAppointmentsRepository, AppointmentsRepository>();
+builder.Services.AddScoped<IReferralsRepository, ReferralsRepository>();
 
 var app = builder.Build();
 

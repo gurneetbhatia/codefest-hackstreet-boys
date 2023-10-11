@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace Domain.Interfaces;
+﻿namespace Domain.Interfaces;
 
 public interface IReferralsRepository
 {
-    List<Referral> Get(int referralId);
-    int Update(int referralId, JObject jsonObject);
+    List<Referral> Get(string firstName, string lastName, DateTime dob);
+    int Update(Referral referral);
 }

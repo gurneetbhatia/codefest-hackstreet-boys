@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Domain.Interfaces;
 using Newtonsoft.Json.Linq;
-using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace API.Controllers;
 
@@ -21,17 +20,17 @@ public class AppointmentsController : ControllerBase
 
     // get appointments for a specific patient or therapist
     [HttpGet("Get")]
-    public async Task<List<Appointment>> Get(int patientId, int therapistId)
+    public async Task<List<Appointment>> Get(int? patientId, int? therapistId)
     {
-        return new List<Appointment>();
+        return _repo.Get(patientId, therapistId);
     }
 
     // admin user/therapist can update details of appointment
     // this method also handles creating new appointments
     [HttpPost("Update")]
-    public async Task<IActionResult> Update(int apptId, [FromForm]JObject formData)
+    public async Task<IActionResult> Update(Appointment appt)
     {
-        if (_repo.Update(apptId, formData) > 0)
+        if (_repo.Update(appt) > 0)
             return Ok();
         else
             return BadRequest();
