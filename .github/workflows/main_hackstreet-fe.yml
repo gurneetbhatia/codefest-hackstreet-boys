@@ -56,6 +56,6 @@ jobs:
           app-name: 'Hackstreet-FE'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2CFC07FB74FA443B8A4EE0A4FDE1D740 }}
-          package: ./ui/dist/ui
+          package: ./ui/dist
 
      
