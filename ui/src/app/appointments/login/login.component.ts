@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.form.controls['email'].value);
-    console.log(this.form.controls['userType'].value)
+    this.dataService.login(this.form.controls['email'].value, this.form.controls['userType'].value);
   }
 
 }
