@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.dataService.login(this.form.controls['email'].value, this.form.controls['userType'].value);
     // this.router.navigate(['/dashboard', { page: 'Appointments' }]);
-    this.router.navigateByUrl('/dashboard/' + 'Appointments')
+    this.router.navigateByUrl('/dashboard/a' + 'Appointments')
   }
 
 }
