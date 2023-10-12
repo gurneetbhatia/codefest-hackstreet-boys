@@ -6,8 +6,8 @@ public class Appointment
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
     public string Service { get; set; }
-    public int PatientID { get; set; }
-    public int TherapistId { get; set; }
+    public string PatientID { get; set; }
+    public string TherapistId { get; set; }
     public DateTime Date { get; set; }
     public string Location { get; set; }
     public string Status { get; set; }

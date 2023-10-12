@@ -23,7 +23,7 @@ public class AppointmentsRepository : IAppointmentsRepository
         if (therapistId.HasValue)
             return _context.Appointments.Where(x => x.TherapistId == therapistId.Value).ToList();
 
-        return new List<Appointment>();
+        return _context.Appointments.ToList();
     }
 
     public int Update(Appointment appt)

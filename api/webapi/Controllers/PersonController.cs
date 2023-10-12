@@ -18,11 +18,11 @@ namespace API.Controllers
 
         public ActionResult Login(string personType, string email)
         {
-            switch(personType)
+            switch (personType)
             {
                 case "Employee":
                     var emp = _repo.GetEmployee(email);
-                    if(emp != null)
+                    if (emp != null)
                     {
                         return Ok(emp.Id);
                     }
