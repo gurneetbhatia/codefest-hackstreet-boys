@@ -17,13 +17,6 @@ public class ReferralsController : ControllerBase
         _repo = repo;
     }
 
-    // get all referrals associated with patient based on: firstname lastname dob
-    [HttpGet("Get")]
-    public async Task<List<Referral>> Get(string firstName, string lastName, DateTime dob)
-    {
-        return _repo.Get(firstName, lastName, dob);
-    }
-
     [HttpPost("Update")]
     public async Task<IActionResult> Update(Referral referral)
     {

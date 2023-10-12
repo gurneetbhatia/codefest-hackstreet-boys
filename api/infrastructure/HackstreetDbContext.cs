@@ -21,6 +21,7 @@ public class HackstreetDbContext : DbContext
     public DbSet<Referral> Referrals { get; set; }
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Patient> Patients { get; set; }
-    public DbSet<Employee> Employee { get; set; }
+    public DbSet<Request> Requests { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 
 }

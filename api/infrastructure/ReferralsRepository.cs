@@ -12,21 +12,15 @@ public class ReferralsRepository : IReferralsRepository
         _context = context;
     }
 
-    public List<Referral> Get(string firstName, string lastName, DateTime dob)
-    {
-        var id = PersonUniqueId(firstName, lastName, dob);
-        return _context.Referrals.Where(x => x.Id == id).ToList();
-    }
-
     public int Update(Referral referral)
     {
         //var referral = referralJsonObject.ToObject<Referral>();
 
         if (referral == null) return 0;
 
-        var id = PersonUniqueId(referral.FirstName, referral.LastName, referral.DOB);
+        var personUid = PersonUniqueId(referral.FirstName, referral.LastName, referral.DOB);
 
-        var patient = _context.Patients.SingleOrDefault(x => x.Id == id);
+        var patient = _context.Patients.SingleOrDefault(x => x.Id == personUid);
 
         if (patient != null)
         {
@@ -34,7 +28,6 @@ public class ReferralsRepository : IReferralsRepository
         }
         else
         {
-            referral.Id = id;
             referral.PatientExists = false;
 
             _context.Patients.Add(new Patient

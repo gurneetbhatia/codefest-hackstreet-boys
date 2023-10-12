@@ -2,7 +2,7 @@
 {
     public abstract class Person
     {
-        public string Id { get; set; }
+        public string Id =>  $"{FirstName.ToUpper()}-{LastName.ToUpper()}-{DOB:yyyyMMdd}";
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DOB { get; set; }
