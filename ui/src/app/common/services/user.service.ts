@@ -25,7 +25,7 @@ export class UserService {
       dob: new Date('05-06-2000'),
       address: '1234 some street',
       email: 'johntherapistdoe@gmail.com',
-      userType: 'Patient'
+      userType: 'Therapist'
     }
     const mockAdminUser: IUser = {
       uid: '1232145',
@@ -34,7 +34,7 @@ export class UserService {
       dob: new Date('05-06-2000'),
       address: '1234 some street',
       email: 'johntheadmindoe@gmail.com',
-      userType: 'Patient'
+      userType: 'Admin'
     }
 
     this.user = mockTherapistUser;

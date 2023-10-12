@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
 
   userType: string;
   appointments: [IAppointment];
+  patients: [IUser];
+  currentPage = 'Patients';
 
   constructor(private userService: UserService,
               private apptsService: AppointmentsService) { }
@@ -20,6 +22,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userType = this.userService.getUserType();
     this.appointments = this.apptsService.getAppointments();
+  }
+
+  navLinkClicked(link: string): void {
+    this.currentPage = link;
   }
 
 }

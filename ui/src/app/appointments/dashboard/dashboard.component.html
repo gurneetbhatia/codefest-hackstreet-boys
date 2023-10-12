@@ -1,4 +1,14 @@
-<table class="table">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <button class="nav-link" [class.active]="currentPage === 'Appointments'" click="navLinkClicked('Appointments')">Appointments</button>
+  </li>
+  <li class="nav-item" *ngIf="userType != 'Patient'">
+    <button class="nav-link" [class.active]="currentPage === 'Patients'" click="navLinkClicked('Patients')">Patients</button>
+  </li>
+</ul>
+
+
+<table *ngIf="currentPage === 'Appointments'" class="table">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -17,6 +27,27 @@
         <td>{{appt.service}}</td>
         <td>{{appt.notes}}</td>
         <td>{{appt.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="currentPage === 'Patients'" class="table">
+    <thead>
+      <tr>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">Date of birth</th>
+        <th scope="col">Address</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{patient.firstName}}</td>
+        <td>{{patient.lastName}}</td>
+        <td>{{patient.dob}}</td>
+        <td>{{patient.address}}</td>
+        <td>{{patient.email}}</td>
       </tr>
     </tbody>
   </table>
