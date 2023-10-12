@@ -1,0 +1,171 @@
+<h2>Referral Form</h2>
+<form (ngSubmit)="submitForm()" [formGroup]="patientForm" class="patient-form">
+  <div class="form-group">
+    <label for="patientName">Patient Name</label>
+    <input
+      formControlName="patientName"
+      type="text"
+      id="patientName"
+      placeholder="Enter Patient Name"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('patientName')?.hasError('required') &&
+        patientForm?.get('patientName')?.touched
+      "
+      class="error-message"
+    >
+      Patient Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="referredBy">Referred By</label>
+    <select formControlName="referredBy" id="referredBy">
+      <option value="">-- Select --</option>
+      <option value="Doctor">Doctor</option>
+      <option value="Self">Self</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div
+      *ngIf="
+        patientForm?.get('referredBy')?.hasError('required') &&
+        patientForm?.get('referredBy')?.touched
+      "
+      class="error-message"
+    >
+      Referred By is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label
+      for="gpName"
+      *ngIf="patientForm?.get('referredBy')?.value === 'Doctor'"
+      >GP Name</label
+    >
+    <label
+      for="gpName"
+      *ngIf="patientForm?.get('referredBy')?.value !== 'Doctor'"
+      >Name</label
+    >
+    <input
+      formControlName="gpName"
+      type="text"
+      id="gpName"
+      placeholder="Enter GP Name"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('gpName')?.hasError('required') &&
+        patientForm?.get('gpName')?.touched
+      "
+      class="error-message"
+    >
+      Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      formControlName="firstName"
+      type="text"
+      id="firstName"
+      placeholder="Enter First Name"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('firstName')?.hasError('required') &&
+        patientForm?.get('firstName')?.touched
+      "
+      class="error-message"
+    >
+      First Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      formControlName="lastName"
+      type="text"
+      id="lastName"
+      placeholder="Enter Last Name"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('lastName')?.hasError('required') &&
+        patientForm?.get('lastName')?.touched
+      "
+      class="error-message"
+    >
+      Last Name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dob">Date of Birth</label>
+    <input formControlName="dob" type="date" id="dob" />
+    <div
+      *ngIf="
+        patientForm?.get('dob')?.hasError('required') &&
+        patientForm?.get('dob')?.touched
+      "
+      class="error-message"
+    >
+      Date of Birth is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input
+      formControlName="address"
+      type="text"
+      id="address"
+      placeholder="Enter Address"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('address')?.hasError('required') &&
+        patientForm?.get('address')?.touched
+      "
+      class="error-message"
+    >
+      Address is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      id="email"
+      placeholder="Enter Email"
+    />
+    <div
+      *ngIf="
+        patientForm?.get('email')?.hasError('required') &&
+        patientForm?.get('email')?.touched
+      "
+      class="error-message"
+    >
+      Email is required.
+    </div>
+    <div
+      *ngIf="
+        patientForm?.get('email')?.hasError('email') &&
+        patientForm?.get('email')?.touched
+      "
+      class="error-message"
+    >
+      Please enter a valid email address.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="!patientForm?.valid" class="submit-button">
+    Submit
+  </button>
+</form>
