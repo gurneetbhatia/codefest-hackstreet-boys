@@ -4,7 +4,7 @@ import { UiReferralsComponent } from './referrals/referrals.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '/referral',
     component: UiReferralsComponent,
     pathMatch: 'full',
   },
