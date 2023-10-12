@@ -12,16 +12,16 @@ public class AppointmentsRepository : IAppointmentsRepository
         _context = context;
     }
 
-    public List<Appointment> Get(int? patientId, int? therapistId)
+    public List<Appointment> Get(string patientId, string therapistId)
     {
-        if (patientId.HasValue && therapistId.HasValue)
-            return _context.Appointments.Where(x => x.PatientID == patientId.Value && x.TherapistId == therapistId.Value).ToList();
+        if (!string.IsNullOrEmpty(patientId) && !string.IsNullOrEmpty(therapistId))
+            return _context.Appointments.Where(x => x.PatientID == patientId && x.TherapistId == therapistId).ToList();
 
-        if (patientId.HasValue)
-            return _context.Appointments.Where(x => x.PatientID == patientId.Value).ToList();
+        if (!string.IsNullOrEmpty(patientId))
+            return _context.Appointments.Where(x => x.PatientID == patientId).ToList();
 
-        if (therapistId.HasValue)
-            return _context.Appointments.Where(x => x.TherapistId == therapistId.Value).ToList();
+        if (!string.IsNullOrEmpty(therapistId))
+            return _context.Appointments.Where(x => x.TherapistId == therapistId).ToList();
 
         return _context.Appointments.ToList();
     }

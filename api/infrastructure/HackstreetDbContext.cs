@@ -12,10 +12,10 @@ public class HackstreetDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Referral>(entity => entity.ToTable("Referrals"));
-        builder.Entity<Appointment>(entity => entity.ToTable("Appointments"));
-        builder.Entity<Patient>(entity => entity.ToTable("Patients"));
-        builder.Entity<Employee>(entity => entity.ToTable("Employees"));
+        builder.Entity<Referral>(entity => entity.ToTable("Referral"));
+        builder.Entity<Appointment>(entity => entity.ToTable("Appointment"));
+        builder.Entity<Patient>(entity => entity.ToTable("Patient"));
+        builder.Entity<Employee>(entity => entity.ToTable("Employee"));
     }
 
     public DbSet<Referral> Referrals { get; set; }

@@ -2,6 +2,6 @@
 
 public interface IAppointmentsRepository
 {
-    List<Appointment> Get(int? patientId, int? therapistId);
+    List<Appointment> Get(string patientId, string therapistId);
     int Update(Appointment appointment);
 }

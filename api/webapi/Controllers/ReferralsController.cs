@@ -20,9 +20,10 @@ public class ReferralsController : ControllerBase
     [HttpPost("Update")]
     public async Task<IActionResult> Update(Referral referral)
     {
-        if (_repo.Update(referral) > 0)
-            return Ok();
-        else
-            return BadRequest();
+        var result = _repo.Update(referral);
+
+        if (string.IsNullOrEmpty(result)) return BadRequest();
+
+        return Ok(result);
     }
 }

@@ -10,7 +10,5 @@
         public String Address { get; set; }
         public String Email { get; set; }
         public bool PatientExists { get; set; }
-
-
     }
 }

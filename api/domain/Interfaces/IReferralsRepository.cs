@@ -2,5 +2,5 @@
 
 public interface IReferralsRepository
 {
-    int Update(Referral referral);
+    string Update(Referral referral);
 }

@@ -12,11 +12,9 @@ public class ReferralsRepository : IReferralsRepository
         _context = context;
     }
 
-    public int Update(Referral referral)
+    public string Update(Referral referral)
     {
-        //var referral = referralJsonObject.ToObject<Referral>();
-
-        if (referral == null) return 0;
+        if (referral == null) return "Invalid referral object";
 
         var personUid = PersonUniqueId(referral.FirstName, referral.LastName, referral.DOB);
 
@@ -40,9 +38,21 @@ public class ReferralsRepository : IReferralsRepository
             });
         }
 
-        _context.Referrals.Add(referral);
+        var existingReferral = _context.Referrals.SingleOrDefault(x => x.FirstName == referral.FirstName && x.LastName == referral.LastName && x.DOB == referral.DOB);
 
-        return _context.SaveChanges();
+        if (existingReferral == null)
+            _context.Referrals.Add(referral);
+        else
+            return $"Referral already exists for {referral.FirstName} {referral.LastName}.";
+
+        if(_context.SaveChanges() > 0)
+        {
+            return "Referral created";
+        }
+        else
+        {
+            return "Failed to create referral";
+        }
     }
 
     private string PersonUniqueId(string firstName, string lastName, DateTime dob)
