@@ -30,6 +30,7 @@ public class ReferralsRepository : IReferralsRepository
 
             _context.Patients.Add(new Patient
             {
+                Id = personUid,
                 FirstName = referral.FirstName,
                 LastName = referral.LastName,
                 Address = referral.Address,

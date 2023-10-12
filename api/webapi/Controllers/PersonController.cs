@@ -16,6 +16,7 @@ namespace API.Controllers
             _repo = repo;
         }
 
+        [HttpPost("Login")]
         public ActionResult Login(string personType, string email)
         {
             switch (personType)

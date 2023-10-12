@@ -20,7 +20,7 @@ public class AppointmentsController : ControllerBase
 
     // get appointments for a specific patient or therapist
     [HttpGet("Get")]
-    public async Task<List<Appointment>> Get(string patientId, string therapistId)
+    public async Task<List<Appointment>> Get(string patientId = "", string therapistId = "")
     {
         return _repo.Get(patientId, therapistId);
     }
