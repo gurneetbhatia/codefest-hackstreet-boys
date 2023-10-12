@@ -18,7 +18,7 @@ public class ReferralsController : ControllerBase
     }
 
     [HttpPost("Update")]
-    public async Task<IActionResult> Update(Referral referral)
+    public async Task<IActionResult> Update([FromForm]Referral referral)
     {
         var result = _repo.Update(referral);
 
