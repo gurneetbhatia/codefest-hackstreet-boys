@@ -21,15 +21,17 @@ namespace API.Controllers
             switch(personType)
             {
                 case "Employee":
-                    if(_repo.GetEmployee(email) != null)
+                    var emp = _repo.GetEmployee(email);
+                    if(emp != null)
                     {
-                        return Ok();
+                        return Ok(emp.Id);
                     }
                     return BadRequest();
                 case "Patient":
-                    if (_repo.GetPatient(email) != null)
+                    var patient = _repo.GetPatient(email);
+                    if (patient != null)
                     {
-                        return Ok();
+                        return Ok(patient.Id);
                     }
                     return BadRequest();
             }

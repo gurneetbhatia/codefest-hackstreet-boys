@@ -5,12 +5,12 @@ public class Appointment
     public string Title { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime EndTime { get; set; }
-    public int ServiceID { get; set; }
+    public string Service { get; set; }
     public int PatientID { get; set; }
     public int TherapistId { get; set; }
     public DateTime Date { get; set; }
     public string Location { get; set; }
-    public int StatusID { get; set; }
+    public string Status { get; set; }
 
     public TimeSpan GetDuration()
     {
