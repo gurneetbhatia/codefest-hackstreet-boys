@@ -16,7 +16,6 @@ export class UiReferralsComponent {
   ngOnInit() {
     this.patientForm = this.fb.group({
       patientName: ['', [Validators.required]],
-      referredBy: ['', [Validators.required]],
       gpName: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
