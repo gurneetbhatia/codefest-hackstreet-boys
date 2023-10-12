@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../Data Service/data-service';
-import { ReferralData } from '../Models/ReferralData.model';
+import { ReferralData } from '../Models/referralData.model';
 
 @Component({
   selector: 'app-ui-referrals',
