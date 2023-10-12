@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataService } from '../Data Service/data-service';
+import { ReferralData } from '../Models/ReferralData.model';
 
 @Component({
   selector: 'app-ui-referrals',
@@ -7,20 +9,40 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrls: ['./referrals.component.scss'],
 })
 export class UiReferralsComponent {
-  patientForm: FormGroup; // Define the form
+  patientForm: FormGroup = new FormGroup({});
+  request: any[] = [];
+  constructor(private fb: FormBuilder, private dataService: DataService) {}
 
-  constructor(private fb: FormBuilder) {
+  ngOnInit() {
     this.patientForm = this.fb.group({
-      patientName: ['', Validators.required],
-      referredBy: ['', Validators.required],
-      dob: ['', Validators.required],
+      patientName: ['', [Validators.required]],
+      referredBy: ['', [Validators.required]],
+      gpName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      dob: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
-  submitForm() {
+  async submitForm() {
     if (this.patientForm.valid) {
       // Process and save the form data here
       console.log(this.patientForm.value);
+
+      const referrals = <ReferralData>{
+        FirstName: this.patientForm.value.firstName,
+        LastName: this.patientForm.value.lastName,
+        DOB: this.patientForm.value.dob,
+        Address: this.patientForm.value.address,
+        Email: this.patientForm.value.email,
+        GPName: this.patientForm.value.gpName,
+        PatientExists: false,
+      };
+
+      this.request.push(referrals);
+      (await this.dataService.postDetails(this.request)).subscribe();
     }
   }
 }
