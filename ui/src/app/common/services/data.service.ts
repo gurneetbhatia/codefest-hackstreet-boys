@@ -10,8 +10,8 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   login(email: string, userType: string): void {
-    this.http.get(this.base + 'Person/Login?personType=' + userType + '&email=' + email).subscribe((res) => {
-      console.log(res);
-    })
+    // this.http.get(this.base + 'Person/Login?personType=' + userType + '&email=' + email).subscribe((res) => {
+    //   console.log(res);
+    // })
   }
 }

@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <button class="nav-link" [class.active]="currentPage === 'Appointments'" click="navLinkClicked('Appointments')">Appointments</button>
+    <button class="nav-link" [class.active]="currentPage === 'Appointments'" (click)="navLinkClicked('Appointments')">Appointments</button>
   </li>
   <li class="nav-item" *ngIf="userType != 'Patient'">
-    <button class="nav-link" [class.active]="currentPage === 'Patients'" click="navLinkClicked('Patients')">Patients</button>
+    <button class="nav-link" [class.active]="currentPage === 'Patients'" (click)="navLinkClicked('Patients')">Patients</button>
   </li>
 </ul>
 
@@ -17,16 +17,18 @@
         <th scope="col">Service</th>
         <th scope="col">Notes link</th>
         <th scope="col">Status</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let appt of appointments">
+      <tr *ngFor="let appt of appointments; index as i">
         <td>{{appt.title}}</td>
         <td>{{appt.startTime}}</td>
         <td>{{appt.duration}}</td>
         <td>{{appt.service}}</td>
         <td>{{appt.notes}}</td>
         <td>{{appt.status}}</td>
+        <td><button class="btn btn-danger" (click)="cancelAppt(i)">Cancel</button></td>
       </tr>
     </tbody>
   </table>
