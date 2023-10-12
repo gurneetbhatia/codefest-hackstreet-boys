@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { DataService } from 'src/app/common/services/data.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(): void {
+  login() {
     this.dataService.login(this.form.controls['email'].value, this.form.controls['userType'].value);
   }
 
